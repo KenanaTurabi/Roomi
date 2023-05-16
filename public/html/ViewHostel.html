@@ -1,0 +1,328 @@
+
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudentSide</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <!-- Favicons
+      ================================================== -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+  <link rel="stylesheet" type="text/css" href="../css/hostelscard.css">
+  
+  
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css"  href="../css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- Stylesheet
+      ================================================== -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/nivo-lightbox.css">
+  <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/default.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
+  
+  <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  
+  
+  </head>
+  
+  
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  
+  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container"> 
+      <div class="navbar-header">
+        <a class="navbar-brand page-scroll logo" href="#page-top"> <i class="ri-home-heart-fill"></i> <span style="color: #D7C9C1; font-size: larger;">  ROOMI</span></a>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#about" class="page-scroll">About</a></li>
+          <li><a href="#articles2" class="page-scroll">Services</a></li>
+          <li><a href="#" id="inbox" onclick="fun1()">Inbox</a></li>
+          <li><a href="#"  id="my" onclick="fun1()">My hostels</a></li>
+          <li><a href="#" onclick="viweprofile()" class="page-scroll">My Profile</a></li>
+          
+          <li><a href="../SignIn.html" class="page-scroll">Sign out</a></li>
+        </ul>
+      </div>
+  
+    </div>
+  </nav>
+  <!-- Header -->
+  <header id="header" style="padding: 0;">
+    <div class="intro" style="width: 100%; padding: 0;">
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 intro-text">
+              <h1>Welcome To<br>
+                ROOMI</h1>
+              <p>To know more about us and to learn how to rent from our hostels click here  </p>
+              <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Get Touch Section -->
+  <div id="get-touch">
+    <div class="container">
+  
+    </div>
+  </div>
+  <!-- About Section -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6"> <img src="../img/about.jpg" class="img-responsive" alt=""> </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="about-text">
+            <h2>Who We Are</h2>
+            <p>ROOMI Website Helping An-Najah students choose the right housing for them in Nablus according to the criteria they want. </p>
+            <div class="list-style">
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                <ul>
+                  <h5>Why Choose Us? </h5>
+                  <li>Free Consultation</li>
+                  <li>Satisfied Customers</li>
+                  <li>Project Management</li>
+                  <li>Affordable Pricing</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                  <ul>
+                  <h5>How to rent from the Website?</h5>
+                    <li>click on the hostel you like</li>
+                    <li>check the information about it</li>
+                    <li>click on booking</li>
+                    <li>fill your book information</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section-title">
+    <h2>Our Hostels</h2>
+  </div>
+  
+  <div class="search">
+    <input type="text" class="searchTerm" id="searchTerm" placeholder="What are you looking for?">
+    <button type="submit" id="searchButton" class="searchButton">
+      <i class="fa fa-search"></i>
+  </button>
+  </div>
+  
+  <section class="articles1" id="articles2">
+  
+  
+  
+  </section>
+  
+  
+  
+  
+  
+  
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    
+        </body>
+        
+        <script>
+  
+  function fun1(){
+
+
+document.getElementById("inbox").href=`./inbox_student.html?studentId=${urlParams.get('id')}`
+document.getElementById("my").href=`./Myhostels.html?studentId=${urlParams.get('id')}`
+return false;
+}
+  function viweprofile(){
+      var studentId = localStorage.getItem("studentId");
+       console.log(studentId);
+      window.location.href = `./StudentProfile.html?id=${studentId}`;
+      }
+        
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+              // var studentId = urlParams.get('id');
+  
+  studentId=urlParams.get('id');
+  console.log(studentId);
+  localStorage.setItem("studentId", studentId);
+  
+  let hostel = document.getElementById("articles2");
+  let search = document.getElementById('searchTerm')
+  let searchButton = document.getElementById("searchButton")
+  
+  searchButton.onclick=()=>{
+    // let searchValue  = search.value
+    console.log(search.value)
+  
+    fetch(`https://roomi.azurewebsites.net/filter/${search.value}`,
+  
+    {
+      withCredentials: true,
+      crossorigin: true,
+      //mode: 'no-cors'
+    }
+  )
+  
+    .then(res => res.json())
+    .then(json => {
+      hostel.innerHTML=""
+      json.map(data => {
+        
+        hostel.append(fun2(data.hostel_name, data.hostel_decsc,data.hostel_image1,data.hostel_image2,data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id,urlParams.get('id')));
+  
+       console.log(data)
+      })
+    })
+  }
+  
+  
+          function fun2(hostel_name, hostel_decsc,hostel_image1,hostel_image2,hostel_image3,girls,hostel_price,capacity,hostel_location,hostel_location_desc,id){
+              let d2=document.createElement('article');
+              d2.innerHTML=`
+          
+          <div class="article-wrapper">
+            <figure>
+              <img src="../img/${hostel_image1}">
+            </figure>
+           
+           
+            
+          
+            <div class="article-body">
+            <h2 id="hostel_name">${hostel_name}</h2></h2>
+          
+            
+              <p id="hostel_decsc" style="color:#6d5a50;">${hostel_decsc}
+              </p>
+              <div class = "hostel-rating" style="color:#ffd700;">
+              <i class = "fas fa-star" ></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-half-alt"></i>
+            </div>
+          
+        
+                Read more<span class="sr-only">about this is some title</span>
+          
+                <a href="../HostelDetailsStudent.html?id=${id}" class="read-more" >
+               
+                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+             
+            </div>
+          
+          </div>`;
+          return d2;
+          }
+        
+      
+  
+  
+            </script>
+  
+        <script>
+        
+  
+  
+  
+        
+          const display_hostelname=document.querySelector('#hostel_name');
+          const display_hosteldesc=document.querySelector('#hostel_decsc');
+          let articles2=document.getElementById("articles2");
+        
+           fetch('https://roomi.azurewebsites.net/hostels', {
+        
+          method: "GET",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        
+        
+        })
+        
+           .then(res=>res.json())
+           .then(json=>{
+              json.map(data=>{
+            
+                articles2.append(fun2(data.hostel_name, data.hostel_decsc,data.hostel_image1,data.hostel_image2,data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id,urlParams.get('id')));
+  
+          
+          })
+          })
+          
+          function fun2(hostel_name, hostel_decsc,hostel_image1,hostel_image2,hostel_image3,girls,hostel_price,capacity,hostel_location,hostel_location_desc,id,studentId){
+              let d2=document.createElement('article');
+              d2.innerHTML=`
+          
+          <div class="article-wrapper">
+            <figure>
+              <img src="../img/${hostel_image1}">
+            </figure>
+           
+           
+            
+          
+            <div class="article-body">
+            <h2 id="hostel_name">${hostel_name}</h2></h2>
+          
+            
+              <p id="hostel_decsc" style="color:#6d5a50;">${hostel_decsc}
+              </p>
+     
+          
+              <a href="../html/HostelDetailsStudent.html?var1=${hostel_name}&var2=${capacity}&var3=${hostel_location}&var4=${hostel_location_desc}&var5=${hostel_price}&var6=${hostel_decsc}&var7=${hostel_image1}&var8=${hostel_image2}&var9=${hostel_image3}&var10=${id}&var11=${girls}&var12=${studentId}" class="read-more" >
+  
+                Read more<span class="sr-only">about this is some title</span>
+          
+               
+                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+             
+            </div>
+          
+          </div>`;
+          return d2;
+          }
+  
+      
+  
+  
+            </script>
+  
+  <section class="footer"> </section>
+  
+    
+  </body>
+  
+  <!-- <a href="../HostelDetailsStudent.html?id=${id}" class="read-more" > -->
+  

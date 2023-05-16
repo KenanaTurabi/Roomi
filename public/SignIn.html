@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Nunito&display=swap" rel="stylesheet">
+    <!-- import main style -->
+    <link rel="stylesheet" href="css/SignUp.css">
+    <!-- <script src="SignUp.js"></script> -->
+    <!-- import font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  
+  
+    <style>
+      body {
+        /* background-image: url("hostel.jpg"); */
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 0 11px rgba(33,33,33,.2); 
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px 20px;
+        margin: 15px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #d9716f;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #d9716f;
+      }
+
+      .error {
+        color: #d9716f;
+        font-size: 12px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo"><i class="ri-home-heart-fill"></i><span>Roomi</span></a>
+      <div class="main">
+  
+        <a href="#" class="user"></i><span>Welcome Page</span></a>
+  
+      </div>
+    </header>
+    <div class="container">
+      <h1   style="margin-top: 10px;">Login</h1>
+      <form
+        id="login-form"
+        action="https://roomi.azurewebsites.net/user/login"
+        method="post"
+      >
+        <label for="email" >Email</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          style="margin-top: 40px;"
+        />
+        <span class="error" id="email-error"
+          >Please enter a valid email address</span
+        >
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          style="margin-top: 40px;"
+        />
+        <span class="error" id="password-error"
+          >Please enter a valid password</span
+        >
+        <button type="submit">Login</button>
+
+        <button type="button" onclick="signUpfun()">Sign Up</button>
+      </form>
+      <div id="login-error" class="error"></div>
+    </div>
+    <script>
+      function validateForm() {
+        // Get email and password fields
+        var emailField = document.getElementById("email");
+        var passwordField = document.getElementById("password");
+        // Get error messages
+        var emailError = document.getElementById("email-error");
+        var passwordError = document.getElementById("password-error");
+        var loginError = document.getElementById("login-error");
+        let id;
+        // Validate email field
+        var email = emailField.value;
+        if (email == "") {
+          emailError.style.display = "block";
+          return false;
+        } else {
+          emailError.style.display = "none";
+        }
+
+        // Validate password field
+        var password = passwordField.value;
+        if (password == "") {
+          passwordError.style.display = "block";
+          return false;
+        } else {
+          passwordError.style.display = "none";
+        }
+        // Send login request to server using fetch function
+        fetch("https://roomi.azurewebsites.net/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        })
+
+        
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("invalid login");
+            }
+          })
+          .then((data) => {
+            // Store the token received from the server in local storage
+            // localStorage.setItem("token", data.token);
+            // localStorage.setItem("userId", data.userId);
+            // Call login function
+           id= data.userId;
+            loginfun(data.userType,id);
+          
+          })
+          .catch((error) => {
+            // Display error message on failed login
+            loginError.style.display = "block";
+            loginError.innerHTML = error.message;
+          });
+
+        // Prevent form from submitting
+        return false;
+      }
+
+      function loginfun(userType,id) {
+        if (userType === "student") {
+          window.location.href = `../html/ViewHostel.html?id=${id}`;
+        } else if (userType === "investor") {
+          window.location.href = `../html/AddHostel_page.html?id=${id}`;
+
+        } else if (userType === "admin") {
+          window.location.href = `./Admin/adminPage.html?id=${id}`;
+        } else {
+          var loginError = document.getElementById("login-error");
+          loginError.style.display = "block";
+          loginError.innerHTML = "Unknown user type";
+          return;
+        }
+      }
+      function signUpfun() {
+        // Redirect to the sign up page
+        window.location.href = "SignUp.html";
+      }
+
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          validateForm();
+        });
+    </script>
+  </body>
+</html>
+

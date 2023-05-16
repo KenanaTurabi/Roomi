@@ -1,0 +1,221 @@
+
+<head>
+    <script>
+        function getParams() {
+          var idx = document.URL.indexOf('?');
+          var params = new Array();
+          if (idx != -1) {
+          var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+          for (var i=0; i<pairs.length; i++) {
+          nameVal = pairs[i].split('=');
+          params[nameVal[0]] = nameVal[1];
+             }
+          }
+          return params;
+          }
+      
+          params = getParams();
+      </script>
+  
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> My hostels</title>
+      <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+      <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script type="text/javascript" src="../js/script.js"></script>
+
+  </head>
+  <div class="blur"  id="myForm"> 
+    </div>
+  
+    <div class="form-popup1" id="myF1">
+      <form action="https://roomi.azurewebsites.net/booking/cancel" class="form-container" method="post">
+        <h3 style="padding-left: 110px; padding-top: 20px; padding-bottom: 20px; color:#E5DDD7
+        WS;">Cancel booking?</h3>
+        <input type="hidden" name="investorId" id="investor">
+         <input type="hidden" name="studentId" id="student" >
+         <input type="hidden" name="hostelId" id="hostel" >
+
+    
+        <button type="submit" class="btn">Yes</button>
+        <button type="button" class="btn cancel" onclick="closeF1()">No</button>
+      </form>
+    </div>
+  
+  <body >
+  
+  
+  <header>
+
+  <div class="logo" ><i class="ri-home-heart-fill"></i><span>Roomi</span></div>
+  <ul class="navbar" id="u">
+  
+    <li><a href="#" class="active" id="myhostels" onclick="fun1()">My hostels</a></li>
+    <li><a href="#">Bookings</a></li>
+
+  <li><a href="#" id="inbox" onclick="fun1()">Inbox</a></li>
+  <li><a href="../SignIn.html">Sign out</a></li>
+  
+  
+  
+  </ul>
+  <div class="main">
+     
+      <a href="#" class="user" id="myprofile" onclick="fun1()"><i class="ri-user-fill"></i><span>Profile</span></a>
+  
+      <div class="bx bx-menu" id="menu-icon">
+        <!-- <a href="#"  ><i class="fa-solid fa-bars"></i></a>-->
+      </div>
+  </div>
+  </header>
+
+
+  
+  <div>
+    <a href="#" class="logo"  id="back" onclick="fun1()"><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 1.8em; color:#d9716f; margin-top: 80px; margin-left: 160px;" ></i></a>
+
+  </div>
+ 
+
+    <table class="itable" style=" width: 1200px; margin-left: 200px;"  >
+      
+        <div style="margin-left: 640px; width: 300px;  height: 45px; border-radius: 7px; background-color: #d7c9c1;">
+                <h2 style=" color:white; font-weight: 400;padding-left: 90px; padding-top: 5px; ">  Bookings</h2>
+                </div>
+
+           
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phonenumber</th>
+    
+               <th>Action</th>
+               <th></th>
+    
+    
+            </tr>
+        </thead>
+        <tbody id="table" >
+             
+
+        </tbody>
+       
+    </table>
+    
+  
+
+  
+
+  </body>
+  
+
+  
+  
+  <script>
+    function fun1(){
+    document.getElementById("myhostels").href=`../html/AddHostel_page.html?id=${unescape(params["investorId"])}`;
+    document.getElementById("inbox").href=`../html/Inbox.html?investorId=${unescape(params["investorId"])}`
+
+    
+const myprofile=document.getElementById("myprofile");
+myprofile.href=`./investorProfile.html?id=${unescape(params["investorId"])}`;
+
+document.getElementById("back").href=`../html/InvestorHostel.html?var10=${unescape(params["id"])}&var12=${unescape(params["investorId"])}`
+
+    return false;
+  }
+let count=1;
+    let booking=document.getElementById("table");
+  
+     fetch('https://roomi.azurewebsites.net/bookings/hostelid', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+        id:unescape(params["id"])
+  
+    
+    })
+  })
+  
+     .then(res=>res.json())
+     .then(json=>{
+
+      json.map(data=>{ 
+        fetch('https://roomi.azurewebsites.net/student/MyProfile', {
+  
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+  body: JSON.stringify({
+      id:data.studentId
+
+  
+  })
+})
+.then(res=>res.json())
+     .then(json=>{
+
+      json.map(data=>{ 
+        booking.append(fun(data.username,data.email, data.mobileNumber,count, data.id ));
+        count++;
+       })
+    })
+    
+    function fun(u,e,m,c,sID){
+        let d=document.createElement('tr');
+        d.innerHTML=`
+    
+    
+    
+        
+        
+
+<td>${c}</td>
+<td>${u}</td>
+<td>${e}</td>
+<td>${m}</td>
+
+<td>
+   <a href="./investor_studentProfile.html?id=${unescape(params["id"])}&investorId=${unescape(params["investorId"])}&studentId=${sID}"> <button type="submit" class="b" > View profile </button></a>
+
+
+</td> 
+<td>
+
+<button type="submit" class="b" onclick="openF1(${unescape(params["id"])},${sID},${unescape(params["investorId"])})" > cancel booking </button>
+
+</td> 
+
+
+
+
+
+`;
+    return d;
+    }
+//////////////////////////////////////////////////////////////////////////////
+      })
+
+         
+    })
+  
+
+      </script>
+    
+    
+  
+  
+  

@@ -1,0 +1,179 @@
+
+<head>
+    <script>
+      function getParams() {
+        var idx = document.URL.indexOf('?');
+        var params = new Array();
+        if (idx != -1) {
+        var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+        for (var i=0; i<pairs.length; i++) {
+        nameVal = pairs[i].split('=');
+        params[nameVal[0]] = nameVal[1];
+           }
+        }
+        return params;
+        }
+        params = getParams();
+    </script>
+  
+  
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> Inbox</title>
+      <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+      <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  </head>
+  
+  <body>
+  
+  
+  <header>
+  
+  <div class="logo" ><i class="ri-home-heart-fill"></i><span>Roomi</span></div>
+  <ul class="navbar" id="u">
+  
+    <li><a href="#" class="active" id="myhostels" onclick="fun1()">My hostels</a></li>
+  
+  <li><a href="#" id="inbox" onclick="fun1()">Inbox</a></li>
+  <li><a href="../SignIn.html">Sign out</a></li>
+  
+  
+  
+  </ul>
+  <div class="main">
+     
+      <a href="#" class="user" id="myprofile" onclick="fun1()"><i class="ri-user-fill"></i><span id="myname"> Profile</span></a>
+  
+      <div class="bx bx-menu" id="menu-icon">
+        <!-- <a href="#"  ><i class="fa-solid fa-bars"></i></a>-->
+      </div>
+  </div>
+  </header>
+  
+  <script type="text/javascript" src="../js/script.js"></script>
+  
+  <button class="open-button" onclick="openForm9()">
+      Compose<i class="fa-solid fa-pen" style="color: white; margin-left: 5px;"></i></button>
+  <!-- The form -->
+  <div class="compose" id="myForm9">
+    
+  
+    
+    
+    
+    <form action="https://roomi.azurewebsites.net/message/add" class="form-container" method="post">
+  
+      <h1>New message</h1>
+      <input type="hidden"   id="investorId" name="investorId" >
+
+  
+      <div><h4 style="color: #d7c9c1;">Email</h4></div>
+      <input type="email" name="studentEmail" placeholder="To:" required>
+  
+      <div><h4 style="color: #d7c9c1;">Message </h4></div>
+      <textarea name="body" rows="8" cols="46" required></textarea>
+  
+  
+      <button type="submit" class="btn-compose" onclick="f()">Send</button>
+      <button type="button" class="btn-compose cancel" onclick="closeForm9()">Close</button>
+    </form>
+  </div>
+  
+  
+  
+  
+  
+  
+  <div class="divScroll" style="  width:1500px;  margin-top :180px; " id="scroll" >
+  
+<table class="itable" style=" width: 1400px; margin-left: 60px; margin-top: 10px;">
+
+
+    <tbody id="table">
+      
+        
+    </tbody>
+</table>
+</div>
+  </body>
+  
+  <script>
+    function f(){
+
+document.getElementById("investorId").value=unescape(params["investorId"]);
+
+
+    }
+  let c=0;
+
+
+  let messages=document.getElementById("table");
+
+  
+     fetch('https://roomi.azurewebsites.net/message', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      investorId:unescape(params["investorId"])
+  
+    
+    })
+  })
+  
+     .then(res=>res.json())
+     .then(json=>{
+        json.map(data=>{
+          console.log(data.investorId, data.body, data.studentId, data.Message_DateTime)
+            messages.append(fun(data.body, data.investorId, data.studentId, data.Message_DateTime, data.student.username ));
+            c++;
+            
+
+    })
+    if(c<8){
+
+document.getElementById("scroll").style.overflowY="hidden";
+}
+    })
+    function fun1(){
+      document.getElementById("myhostels").href=`../html/AddHostel_page.html?id=${unescape(params["investorId"])}`
+      document.getElementById("myprofile").href=`../html/investorProfile.html?id=${unescape(params["investorId"])}`
+      document.getElementById("inbox").href=`../html/Inbox.html?investorId=${unescape(params["investorId"])}`
+
+      return false;
+    }
+    function fun(body, investorid, studentid, time, username){
+        let d=document.createElement('tr');
+        d.innerHTML=`
+    
+        <td><a href="./investor_studentprofile.html?id=null&investorId=${investorid}&studentId=${studentid}" style="font-size:1.6em; color:#d9716f; "> <i class="ri-user-fill"></i></a>${username} </td>
+<td style="width:1000px;">${body}</td>
+
+
+<td> ${time}</td>
+
+    
+ `;
+    return d;
+    }
+      </script>
+    
+  
+     
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+  function getParams() {
+    var idx = document.URL.indexOf('?');
+    var params = new Array();
+    if (idx != -1) {
+    var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+    for (var i=0; i<pairs.length; i++) {
+    nameVal = pairs[i].split('=');
+    params[nameVal[0]] = nameVal[1];
+       }
+    }
+    return params;
+    }
+
+    params = getParams();
+</script>
+<link rel="stylesheet" href="../css/styleCV1.css">
+
+<!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    
+    
+    
+    
+    <!-- Stylesheet
+        ================================================== -->
+    <link rel="stylesheet" type="text/css" href="../css/style1.css">
+    <link rel="stylesheet" type="text/css" href="../css/details1.css">
+    <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/default.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+
+    <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My hostels</title>
+    <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+    <link rel="stylesheet" type="text/css" href="../comments1.css">
+
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+ <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script> 
+</head>
+<div class="blur"  id="myForm"> 
+  </div>
+
+
+ <body>
+
+
+<header>
+
+<div class="logo" ><i class="ri-home-heart-fill"></i><span>Roomi</span></div>
+<ul class="navbar">
+  <li><a href="#" class="active" id="myhostels" onclick="fun1()">My hostels</a></li>
+<li><a href="#" id="inbox" onclick="fun1()">Inbox</a></li>
+<li><a href="#" id="bookings" onclick="fun3();">Bookings</a></li>
+
+<li><a href="../SignIn.html">Sign out</a></li>
+
+
+
+</ul>
+<div class="main">
+   
+    <a href="#" class="user" id="myprofile" onclick="fun1()"><i class="ri-user-fill"></i><span>Profile</span></a>
+
+    <div class="bx bx-menu" id="menu-icon">
+    </div>
+</div>
+</header>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<div class="form-popup1" id="myForm3">
+  <form action=" https://roomi.azurewebsites.net/hostel/delete" class="form-container" method="post">
+    <h3 style="padding-left: 10px; padding-top: 20px; padding-bottom: 20px; color:#d7c9c1
+    WS;">Do you want to delete hostel?</h3>
+     <input type="hidden" name="hostel_id1" id="id1" >
+
+    <button type="submit" class="btn" >Yes</button>
+    <button type="button" class="btn cancel" onclick="closeForm3()">No</button>
+  </form>
+</div>
+
+
+<div class="form-popup" id="myForm2">
+  
+ 
+  
+    <form action=" https://roomi.azurewebsites.net/hostel/update" class="form-container" method="post" name="thisform">
+
+    <h1>Edit hostel</h1>
+    <input type="hidden" name="hostel_id" id="id" >
+
+    <div><h4 style="color: #d7c9c1;">Hostel name</h4></div>
+    <input type="text" id="n" name="hostel_name" required>
+
+    <div><h4 style="color: #d7c9c1;">Price </h4></div>
+    <input type="number"  id="pr" name="hostel_price" required>
+
+    <div><h4 style="color: #d7c9c1;">Location </h4></div>
+    <input type="text"  id="loc" name="hostel_location" required> 
+    
+    <div><h4 style="color: #d7c9c1;">Description </h4></div>
+    <input type="text" id="d"  name="hostel_desc" required> 
+    <div><h4 style="color: #d7c9c1;">Location description </h4></div>
+    <input type="text"  id="loc_desc" name="hostel_location_desc" required> 
+    <div><h4 style="color: #d7c9c1;">Capacity </h4></div>
+    <input type="number"   id="c" name="capacity" required> 
+
+    <div><h4 style="color: #d7c9c1;">Gender</h4></div>
+    <div class="field-wrap">
+      <table>
+        <tbody>
+          <tr>
+            <td><input type="radio" id="f" name="girls" value="1"></td>
+            <td class="Rtype">Females</td>
+            <td><input type="radio"  id="m" name="girls" value="0"></td>
+            <td class="Rtype">Males</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div><h4 style="color: #d7c9c1;">Choose images</h4></div>
+
+   <input type="file" id="img1" name="hostel_image1"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+   <input type="file" id="img2" name="hostel_image2"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+   <input type="file" id="img3" name="hostel_image3"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+    <button type="submit" class="btn">Save</button>
+    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+  </form>
+</div> 
+
+
+
+
+<body>
+ 
+<div>
+
+                    <div class = "card-wrapper">
+      <div class = "card">
+  <div class = "host-imgs">
+      <div class = "img-display">
+        <div class = "img-showcase">
+          <img src = "" alt = "host image" id="image11">
+          <img src = "" alt = "host image"  id="image22">
+          <img src = "" alt = "host image"  id="image33">
+        </div>
+      </div>
+      <div class = "img-select">
+        <div class = "img-item">
+          <a href = "#" data-id = "1">
+            <img src = "" alt = "host image"  id="image1">
+          </a>
+        </div>
+        <div class = "img-item">
+          <a href = "#" data-id = "2">
+            <img src = "" alt = "host image"  id="image2">
+          </a>
+        </div>
+        <div class = "img-item">
+          <a href = "#" data-id = "3">
+            <img src = "" alt = "host image"  id="image3">
+          </a>
+        </div>
+      </div>
+    </div>
+            <!-- card right -->
+            <div class = "hostel-content">
+              <h2 class = "hostel-title" id="h_name"></h2>
+           
+                  <div class = "hostel-detail">
+                      <ul>
+                          <li>Gender: <span id="girls"></span></li>
+                          <li class = "price" >Rental Price: <span id="price">₪</span></li>
+                
+                          <li>Capacity of tenants: <span id="capacity"></span></li>
+                          <li>Number of tenants: <span>2</span></li>
+                          <li>Location: <span id="location"></span></li>
+
+
+                        
+                        </ul>
+          <p id="location_desc"></p>
+          <p id="desc"></p>
+
+          <div class = "hostel-rating" id="r">
+             
+            </div> 
+            <div class="data">
+              <a href="#" class="edit" onclick="openForm2()">Edit</a>
+              <a href="#" class="edit" onclick="openForm3()"> Delete</a>
+             
+      
+            
+            </div>             
+                  </div>
+                  
+            </div>
+      </div>
+    
+</div>
+
+<script src="../details.js"></script>
+
+<!-------------------------------------------------------------------------->
+<div class="divScroll" style="  width:1350px; " id="scroll" >
+  <h3 style="margin-left: 200px; color:#d9716f"> Comments</h3>
+
+<section class="main" >
+  <div class="full-boxer" id="comment">
+     
+  </div>
+  
+</section>
+</div>
+</body>
+<script>
+
+
+
+function fun1(){
+    document.getElementById("myhostels").href=`../html/AddHostel_page.html?id=${unescape(params["var12"])}`;
+    
+const myprofile=document.getElementById("myprofile");
+myprofile.href=`./investorProfile.html?id=${unescape(params["var12"])}`;
+document.getElementById("inbox").href=`../html/Inbox.html?investorId=${unescape(params["var12"])}`
+
+
+    return false;
+  }
+function fun3(){
+  const bookings=document.getElementById("bookings");
+bookings.href=`./investor_bookings.html?id=${unescape(params["var10"])}&investorId=${unescape(params["var12"])}`;
+
+  return false;
+}
+
+
+
+    fetch(' https://roomi.azurewebsites.net/hostels/showdetails', {
+
+method: "post",
+headers: {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+},
+
+body: JSON.stringify({
+    id:unescape(params["var10"])
+
+  
+  })
+})
+
+ .then(res=>res.json())
+ .then(json=>{
+    json.map(data=>{
+      var para1=document.getElementById('h_name');
+  //  var para2=document.getElementById('capacity');
+   var para3=document.getElementById('price');
+   var para4=document.getElementById('location');
+   var para5=document.getElementById('location_desc');
+   var para6=document.getElementById('desc');
+   var para7=document.getElementById('image1');
+   var para8=document.getElementById('image2');
+   var para9=document.getElementById('image3');
+   var para77=document.getElementById('image11');
+   var para88=document.getElementById('image22');
+   var para99=document.getElementById('image33');
+   var para11=document.getElementById('girls');
+   var para22=document.getElementById('capacity');
+
+
+  var para10=document.getElementById('id');
+  var para12=document.getElementById('id1');
+
+   var p1=document.getElementById('n');
+   var p2=document.getElementById('pr');
+   var p3=document.getElementById('loc');
+   var p4=document.getElementById('d');
+   var p5=document.getElementById('loc_desc');
+   var p6=document.getElementById('c');
+   const radio1=document.getElementById('f');
+   const radio2=document.getElementById('m');
+
+
+
+
+   p1.value=data.hostel_name;
+  p2.value=data.hostel_price;
+  p3.value=data.hostel_location;
+
+  p4.value=data.hostel_decsc;
+  p5.value=data.hostel_location_desc;
+  p6.value=data.capacity;
+
+if(data.girls==true){
+  radio1.checked=true;
+
+}
+else if(data.girls==false){
+  radio2.checked=true;
+
+ }
+
+  para7.src = "../img/"+ data.hostel_image1;
+  para8.src = "../img/"+data.hostel_image2;
+  para9.src = "../img/"+data.hostel_image3;
+
+  para77.src = "../img/"+ data.hostel_image1;
+  para88.src = "../img/"+data.hostel_image2;
+  para99.src = "../img/"+data.hostel_image3;
+
+  para1.insertAdjacentHTML('beforeend',data.hostel_name);
+  para22.textContent=data.capacity;
+
+  para3.insertAdjacentHTML('beforeend',data.hostel_price);
+
+  para4.insertAdjacentHTML('beforeend',data.hostel_location);
+  para5.insertAdjacentHTML('beforeend',data.hostel_location_desc);
+  para6.insertAdjacentHTML('beforeend',data.hostel_decsc);
+
+if(data.girls==true){
+  para11.textContent="Female";
+
+}
+else if(data.girls==false){
+  para11.textContent="Males";
+
+ }
+
+ para10.value = unescape(params["var10"]);  
+ para12.value = unescape(params["var10"]);  
+
+ const p8=document.getElementById('img1');
+   const p9=document.getElementById('img2');
+   const p10=document.getElementById('img3');
+
+//transfer images to form
+
+ const myFile = new File(['Hello World!'], data.hostel_image1, {
+        type: 'text/plain',
+        lastModified: new Date(),
+    });
+
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(myFile);
+    p8.files = dataTransfer.files;
+    //--------------------------------
+    const myFile1 = new File(['Hello World!'],data.hostel_image2 , {
+        type: 'text/plain',
+        lastModified: new Date(),
+    });
+
+    const dataTransfer1 = new DataTransfer();
+    dataTransfer1.items.add(myFile1);
+    p9.files = dataTransfer1.files;
+    //--------------------------------
+    const myFile2 = new File(['Hello World!'], data.hostel_image3 , {
+        type: 'text/plain',
+        lastModified: new Date(),
+    });
+
+    const dataTransfer2 = new DataTransfer();
+    dataTransfer2.items.add(myFile2);
+    p10.files = dataTransfer2.files;
+
+
+
+
+
+      
+})
+})
+
+  </script> 
+
+  
+<script>
+let c=0;
+let comment=document.getElementById("comment");
+
+   fetch('https://roomi.azurewebsites.net/hostel/comment', {
+
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+  //make sure to serialize your JSON body
+  body: JSON.stringify({
+    id:unescape(params["var10"])//send hostel id
+
+  
+  })
+})
+
+   .then(res=>res.json())
+   .then(json=>{
+      json.map(data=>{
+        
+      comment.append(fun(data.comment_DateTime, data.coment_content, data.student.username));
+c++;
+  })
+  if(c==0){
+
+    document.getElementById("scroll").style.overflowY="hidden";
+  }
+  })
+
+
+  function fun(date,comment,username){
+
+      let d=document.createElement('div');
+      d.innerHTML=`
+      
+     
+    
+      <div class="comment-box">
+          <div class="box-top">
+              <div class="Profile">
+              
+                  <div class="Name">
+                      <strong>${username}</strong>
+                      <small style="color:#6d5a50;"><p5>${date}</p5></small>
+                   
+                  </div>
+              </div>
+          </div>
+          <div class="comment" style="padding-left:10px;">
+              <p>
+                ${comment}
+              </p>
+          </div>
+      </div>     
+    
+  `;
+  return d;
+  }
+ 
+    </script>
+
+<script>
+  let rating_val=0;
+  let rating_mod=0;
+let r1=0;
+let r2=0;
+let count=0;
+
+  let rating=document.getElementById("r");
+  
+     fetch('https://roomi.azurewebsites.net/hostel/rate', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      id:unescape(params["var10"])//send hostel id
+  
+    
+    })
+  })
+
+     .then(res=>res.json())
+     .then(json=>{
+        json.map(data=>{
+          
+        rating_val=rating_val+data.rating_val;
+count++;
+    
+    })
+
+    rating_mod=rating_val/count;
+    
+  if(Math.floor(rating_mod)==5){
+    rating.append(f5());
+  }
+  else if(Math.floor(rating_mod)==4){
+    rating.append(f4());
+  }
+  else if(Math.floor(rating_mod)==3){
+    rating.append(f3());
+  }
+ 
+ 
+  else if(Math.floor(rating_mod)==2){
+    rating.append(f2());
+  }
+ 
+ 
+  else if(Math.floor(rating_mod)==1){
+    rating.append(f1());
+  }
+ 
+ 
+ 
+      
+    })
+    
+    
+    
+  
+    function f5(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f4(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f3(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f2(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f1(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+      </script>
+</html>

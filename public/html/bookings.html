@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="../Admin/styles.css" />
+  <link rel="stylesheet" href="../css/styleadmin1.css">
+
+    <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+
+    
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<div class="blur"  id="myForm"> 
+  </div>
+
+
+  
+
+
+
+<body style="    background:white">
+
+
+  <div class="d-flex" id="wrapper">
+
+ <!-- Sidebar -->
+ <div class="bg-white" id="sidebar-wrapper">
+  <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold  border-bottom">
+  <i
+          class="z"></i>Roomi</div>
+
+  <div class="list-group list-group-flush my-3">
+      <a href="../Admin/adminPage.html" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+              class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+
+      <a href="../Admin/Student.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+              class="fas fa-user me-2"></i>Students</a>
+
+      <a href="../html/viewinvestors.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+              class="fas fa-hand-holding-usd me-2"></i>Investors</a>
+
+              <a href="./AdminHostel_pending.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-house-user me-2"></i>Hostels</a>
+
+                  <a href="../html/bookings.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                    class="fas fa-solid fa-calendar-check me-2"></i>Bookings</a>
+
+                  
+     
+      <a href="../SignIn.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+              class="fas fa-power-off me-2"></i>Logout</a>
+              
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->
+   <!-- Page Content -->
+   <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+            <h2 class="fs-2 m-0"  style="color: #6d5a50;">Dashboard</h2>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+      
+    </nav>
+
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<main class="table">
+  <section class="table__header">
+      <h1>Booking information</h1>
+  
+     
+  </section>
+  <section class="table__body">
+      <table>
+          <thead>
+              <tr>
+                  <th> Name <span ></span></th>
+                  <th> Email <span ></span></th>
+                  <th> Mobile number<span></span></th>
+                  <th> Hostel name<span ></span></th>
+                
+              </tr>
+          </thead>
+          <tbody id="table">
+          
+          </tbody>
+      </table>
+  </section>
+</main>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+    var el = document.getElementById("wrapper");
+    var toggleButton = document.getElementById("menu-toggle");
+
+    toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+        $(document).ready(function(){
+    $(".xp-menubar").on('click',function(){
+    $("#sidebar").toggleClass('active');
+  $("#content").toggleClass('active');
+  });
+  
+  $('.xp-menubar,.body-overlay').on('click',function(){
+     $("#sidebar,.body-overlay").toggleClass('show-nav');
+  });
+  
+ });
+    };
+</script>
+</body>
+<script>
+    function fun1(){
+    document.getElementById("myhostels").href=`../html/AddHostel_page.html?id=${unescape(params["investorId"])}`;
+    document.getElementById("inbox").href=`../html/Inbox.html?investorId=${unescape(params["investorId"])}`
+
+    return false;
+  }
+let count=1;
+    let booking=document.getElementById("table");
+  
+     fetch('https://roomi.azurewebsites.net/admin/bookings', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+  })
+  
+     .then(res=>res.json())
+     .then(json=>{
+       
+
+      json.map(data=>{ 
+        console.log(data.hostel.investorId)
+        booking.append(fun(data.student.username,data.student.email, data.student.mobileNumber,count, data.hostel.hostel_name, data.student.id, data.hostel.id , data.hostel.investorId));
+        count++;
+    
+    })
+  })
+    function fun(u,e,m,c,hostelName,id, hID,investor){
+        let d=document.createElement('tr');
+        d.innerHTML=`
+    
+        <td><a href="../html/Admin_studentProfile1.html?id=${id}" style="font-size:1.4em; color:#d7c9c1; text-decoration:none; "> <i class="ri-user-fill"></i></a>${u} </td>
+                  <td> ${e}</td>
+                  <td> ${m} </td>
+                  <td> <a href="../html/hosteldetails1.html?var10=${hID}" style="font-size:1.4em; color:#d7c9c1; text-decoration:none; ">  <i class="fa-solid fa-house"></i> </a>${hostelName} </td>
+                
+
+`;
+    return d;
+    }
+
+
+
+      </script>
+</html>

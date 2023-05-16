@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InvestorProfile</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+
+
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" type="text/css"  href="css/bootstrap.css"> -->
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css" href="../css/profile1.css">
+<link rel="stylesheet" type="text/css" href="../css/style1.css">
+
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+</head>
+<div class="blur"  id="myForm"> 
+</div>
+  <script>
+    function getParams() {
+      var idx = document.URL.indexOf('?');
+      var params = new Array();
+      if (idx != -1) {
+      var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+      for (var i=0; i<pairs.length; i++) {
+      nameVal = pairs[i].split('=');
+      params[nameVal[0]] = nameVal[1];
+         }
+      }
+      return params;
+      }
+      params = getParams();
+  </script>
+
+
+<body>
+  <header>
+
+
+  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="logo" ><i class="ri-home-heart-fill" style="color: #d9716f;font-size: 1.3em; margin-top: 5px;"></i><span style=" color: #d9716f; text-decoration: none;" >Roomi</span></div>
+
+    <ul class="navbar" id="u">
+
+      <li><a  href="#" class="active" id="home" onclick="fun1()" style="text-decoration: none;">Home</a></li>
+    
+    <li><a href="../SignIn.html"  style="text-decoration: none;">Sign out</a></li>
+    
+    
+    
+    </ul>
+  
+    </div>
+  </nav>
+  </header>
+
+
+
+  <div class="padding" id="p">
+   
+</div>
+</body>
+
+<div class="form-popup" id="myForm7">
+  
+ 
+  
+  <form action=" https://roomi.azurewebsites.net/student_profile/update" class="form-container" method="post" >
+
+  <h1>Edit profile</h1>
+  <input type="hidden" name="studentId" id="studentId" >
+
+  <div><h4 style="color: #d7c9c1;">Username</h4></div>
+  <input type="text" id="username" name="username" required>
+
+  <div><h4 style="color: #d7c9c1;">email </h4></div>
+  <input type="email"  id="email" name="email" style=" background: #f1f1f1;
+  color: #6d5a50; width:100%;    border: none;    padding: 5px;
+    margin: 5px 0 22px 0;" pattern=".+@gmail\.com" placeholder="username@gmail.com" required>
+<div><h4 style="color: #d7c9c1;">Mobile Number </h4></div>
+<input type="number"  id="mobileNumber" name="mobileNumber" style=" background: #f1f1f1;
+color: #6d5a50; width:100%;    border: none;    padding: 5px;
+  margin: 5px 0 22px 0;" required> 
+  <div><h4 style="color: #d7c9c1;">City</h4></div>
+  <input type="text"  id="city" name="city" required> 
+
+
+  <div><h4 style="color: #d7c9c1;">Profile image</h4></div>
+
+ <input type="file" id="img1" name="img1"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+
+  <button type="submit" class="btn">Save</button>
+  <button type="button" class="btn cancel" onclick="closeForm7()">Close</button>
+</form>
+</div> 
+<script>
+     let studentId;
+function fun1(){
+    document.getElementById("home").href=`./ViewHostel.html?id=${unescape(params["id"])}`
+
+
+    return false;
+  }
+  studentId=document.getElementById("studentId");
+   studentId.value=unescape(params["id"]);
+   console.log(studentId)
+   
+  let profile=document.getElementById("p");
+   
+  fetch('https://roomi.azurewebsites.net/student/MyProfile', {
+
+method: "post",
+headers: {
+'Accept': 'application/json',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({
+    id:unescape(params["id"])
+
+  
+  })
+})
+
+
+.then(res=>res.json())
+.then(json=>{
+  
+  json.map(data=>{
+  profile.append(fun2(data.username, data.email,data.mobileNumber, data.city, data.img1));
+
+  let name=document.getElementById("username");
+   let email=document.getElementById("email");
+   let mobileNumber=document.getElementById("mobileNumber");
+   let city=document.getElementById("city");
+
+   
+
+   name.value=data.username;
+   email.value=data.email;
+   mobileNumber.value=data.mobileNumber;
+   city.value=data.city;
+
+ const p8=document.getElementById('img1');
+
+//transfer images to form
+
+ const myFile = new File(['Hello World!'], data.img1, {
+        type: 'text/plain',
+        lastModified: new Date(),
+    });
+
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(myFile);
+    p8.files = dataTransfer.files;
+    //--------------------------------
+
+})
+
+})
+
+  function fun2(n,e,m, c,i){
+ 
+
+      let d2=document.createElement('div');
+      d2.innerHTML=`
+      <div class="col-md-8">
+        <!-- Column -->
+        <div class="card" > <img class="card-img-top" src="../img/e5ddd7.png" alt="Card image cap">
+            <div class="card-body little-profile text-center">
+                <div class="pro-img"><img src="../img/${i}" alt="user"></div>
+                <h3 class="m-b-0">${n}</h3>
+                <button class="editbtn" onclick="openForm7()"> Edit profile</button>
+                 <!-- <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-secondary btn-md btn-rounded" data-abc="true">Edit profile</a> -->
+                <div class="row text-center m-t-30">
+                  <div class="col-lg-4 col-md-4 m-t-20">
+                        <h6 class="m-b-0 font-light">city</h6><medium>${c}</medium>
+                    </div>
+                    <div class="col-lg-4 col-md-4 m-t-20">
+                        <h6 class="m-b-0 font-light">Mobile number</h6><medium>${m}</medium>
+                    </div>
+                    <div class="col-lg-4 col-md-4 m-t-20">
+                        <h6 class="m-b-0 font-light">Email</h6><medium>${e}</medium>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `;
+      
+  return d2;
+  }
+
+ 
+    </script> 

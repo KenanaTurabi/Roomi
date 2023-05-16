@@ -1,0 +1,278 @@
+body {
+    background-color: #000000
+}
+
+.padding {
+    padding: 3rem !important;
+    margin-left: 25%;
+}
+
+.card-img-top{
+    height:180px;
+}
+
+.card-no-border .card {
+    border-color: #d7dfe3;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    border-radius: 10px;
+}
+
+.pro-img {
+    margin-top: -80px;
+    margin-bottom: 20px
+}
+
+.little-profile .pro-img img {
+    width: 148px;
+    height: 148px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 100%
+}
+
+html body .m-b-0 {
+    margin-bottom: 0px
+}
+
+h3 {
+    line-height: 30px;
+    font-size: 21px
+}
+
+.btn-rounded.btn-md {
+    padding: 12px 35px;
+    font-size: 16px
+}
+
+html body .m-t-10 {
+    margin-top: 10px
+}
+
+.editbtn{
+    background: #D9716F;
+    color: #efeeed;
+    border: #D9716F;
+    width: 150px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    border-radius: 3px;
+cursor: pointer;
+
+
+}
+.navbar-nav {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+}
+
+li {
+    float: left;
+    display: inline-flex;
+  }
+  
+  li a {
+    display: block;
+    color: #D9716F;
+    text-align: center;
+    padding: 1px 30px;
+    text-decoration: none;
+    font-size: 1.1em;
+  }
+  li a:hover{
+    color: #D9716F;
+text-decoration: none;
+
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+.btn-rounded {
+    border-radius: 60px;
+    padding: 7px 18px
+}
+
+.m-t-20 {
+    margin-top: 20px
+}
+
+.text-center {
+    text-align: center !important
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #455a64;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+.link{
+text-decoration: none;}
+.link:hover{
+
+    text-decoration: none;
+    color: #D9716F;
+
+}
+.logo{
+
+    display: flex;
+    align-items: center;
+    color:#D9716F;
+    
+}
+.logo:hover{
+    color: #D9716F;
+    text-decoration: none;
+
+}
+.logo i{
+
+    color: #D9716F;;
+    font-size: 25px;
+    margin-right: 3px;
+}
+.logo span{
+    color:#D9716F;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -205px;
+    margin-top: -250px;
+    border: 3px solid #f1f1f1;
+    z-index:10000;
+
+  }
+  .form-popup1 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -205px;
+    margin-top: -150px;
+    border: 3px solid #f1f1f1;
+    z-index:10000;
+    border-radius: 10px;
+
+  }
+  
+  .blur{
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100vw;
+    height: 110vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    
+  }
+
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 420px;
+    padding: 5px;
+    background-color: white;
+    color: #d7c9c1;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=text] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    color: #6d5a50;
+  }
+  
+  .form-container input[type=text]:focus, .form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+    color: #6d5a50;
+
+  }
+  
+  
+  .form-container .btn {
+    background-color: #d9716f;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 190px;
+    margin-bottom:10px;
+    opacity: 0.8;
+    margin-left: 5px;
+  }
+  .form-container .btn1 {
+    background-color: #d9716f;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+
+    cursor: pointer;
+    width: 48%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+
+  .form-container .btn2 {
+    background-color: #d9716f;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+    margin-bottom:10px;
+    opacity: 0.8;
+    margin-left: 15px;
+  }
+  .form-container .cancel {
+    background-color: #d7c9c1;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  .form-container .btn:hover, .open-button2:hover {
+    opacity: 1;
+  }
+/*------------------------------------*/

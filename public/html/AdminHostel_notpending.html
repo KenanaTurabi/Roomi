@@ -1,0 +1,206 @@
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="../Admin/styles.css" />
+
+
+
+    <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Accepted Hostels</title>
+    <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+
+    
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<div class="blur"  id="myForm"> 
+  </div>
+
+
+  
+
+
+
+<body style="    background:white">
+
+
+  <div class="d-flex" id="wrapper">
+
+ <!-- Sidebar -->
+ <div class="bg-white" id="sidebar-wrapper">
+  <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold  border-bottom">
+  Roomi</div>
+
+  <div class="list-group list-group-flush my-3">
+      <a href="../Admin/adminPage.html" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+              class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+
+      <a href="../Admin/Student.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+              class="fas fa-user me-2"></i>Students</a>
+
+      <a href="../html/viewinvestors.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+              class="fas fa-hand-holding-usd me-2"></i>Investors</a>
+
+              <a href="./AdminHostel_pending.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-house-user me-2"></i>Hostels</a>
+                  
+                  <a href="../html/bookings.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                    class="fas fa-solid fa-calendar-check me-2"></i>Bookings</a>
+
+                  
+     
+      <a href="../SignIn.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+              class="fas fa-power-off me-2"></i>Logout</a>
+              
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->
+   <!-- Page Content -->
+   <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+            <h2 class="fs-2 m-0"  style="color: #6d5a50">Dashboard</h2>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+      
+    </nav>
+
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<div class="dropdown1">
+  <button class="dropbtn">Accepted</button>
+  <div class="dropdown-content">
+    <a href="./AdminHostel_pending.html">Pending</a>
+    <a href="./Allhostels.html">All hostels</a>
+  </div>
+</div>
+
+
+ 
+
+
+
+<!-------cards---------->
+<section class="articles1" id="articles2">
+  <script type="text/javascript" src="../js/investor_hostels.js"></script>
+
+</section>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+    var el = document.getElementById("wrapper");
+    var toggleButton = document.getElementById("menu-toggle");
+
+    toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+        $(document).ready(function(){
+    $(".xp-menubar").on('click',function(){
+    $("#sidebar").toggleClass('active');
+  $("#content").toggleClass('active');
+  });
+  
+  $('.xp-menubar,.body-overlay').on('click',function(){
+     $("#sidebar,.body-overlay").toggleClass('show-nav');
+  });
+  
+ });
+    };
+</script>
+</body>
+
+<script>
+
+  
+
+  const display_hostelname=document.querySelector('#hostel_name');
+  const display_hosteldesc=document.querySelector('#hostel_decsc');
+  let articles2=document.getElementById("articles2");
+
+   fetch(' https://roomi.azurewebsites.net/requestsNotPend', {
+
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+
+})
+
+   .then(res=>res.json())
+   .then(json=>{
+      json.map(data=>{
+      console.log(data.hostel_name, data.hostel_decsc,data.hostel_image1, data.hostel_image2, data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id)
+      articles2.append(fun2(data.hostel_name, data.hostel_decsc,data.hostel_image1,data.hostel_image2,data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id));
+  
+  // display_hostelname.insertAdjacentHTML('beforeend',data.hostel_name)
+  // display_hosteldesc.insertAdjacentHTML('beforeend',data.hostel_decsc)
+  
+  })
+  })
+  
+  function fun2(hostel_name, hostel_decsc,hostel_image1,hostel_image2,hostel_image3,girls,hostel_price,capacity,hostel_location,hostel_location_desc,id){
+      let d2=document.createElement('article');
+      d2.innerHTML=`
+  
+  
+  
+  <div class="article-wrapper">
+    <figure>
+      <img src="../img/${hostel_image1}">
+    </figure>
+   
+   
+    
+  
+    <div class="article-body">
+    <h2 id="hostel_name">${hostel_name}</h2></h2>
+  
+    
+      <p id="hostel_decsc" style="color:#6d5a50;">${hostel_decsc}
+      </p>
+    
+    
+  
+      <a href="../html/notpending.html?var1=${hostel_name}&var2=${capacity}&var3=${hostel_location}&var4=${hostel_location_desc}&var5=${hostel_price}&var6=${hostel_decsc}&var7=${hostel_image1}&var8=${hostel_image2}&var9=${hostel_image3}&var10=${id}&var11=${girls}" class="read-more" >
+        Read more<span class="sr-only">about this is some title</span>
+  
+       
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+     
+    </div>
+  
+  </div>`;
+  return d2;
+  }
+    </script>
+  

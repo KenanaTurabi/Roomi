@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+*{
+    font-family: 'verdana' ,sans-serif;
+}
+body{
+    
+    background-color:#fff ;
+    
+    
+    
+}
+
+
+:root {
+  --main-bg-color: #fff;
+  --main-text-color: #D9716F;
+  --second-text-color: #D9716F;
+  --second-bg-color: #fff;
+}
+
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  
+  
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  table.table td a:hover{
+    color:#2196F3;
+  }
+  
+  
+  
+ .delete{
+    color:#D9716F;
+  }
+  .pagination{
+    float:right;
+    margin:0 0 5px;
+  }
+  
+  .pagination  li a{
+    border:none;
+    font-size:13px;
+    min-width:30px;
+    min-height:30px;
+    color:#999;
+    margin:0 2px;
+    line-height:30px;
+    border-radius:2px!important;
+    text-align:center;
+    padding:0 6px;
+  }
+  
+  .pagination  li a:hover{
+    color:#666;
+  }
+  
+  
+  .pagination li.disabled i{
+    color:#ccc;
+    
+  }
+  
+  .pagination li i{
+    font-size:16px;
+    padding-top:6px;
+  }
+  
+  .hint-text{
+    float:left;
+    margin-top:10px;
+    font-size:13px;
+  }
+  
+  .custom-checkbox{
+    position:relative;
+  }
+  
+  
+  .custom-checkbox input[type="checkbox"]{
+    opacity:0;
+    position:absolute;
+    margin:5px 0 0  3px;
+    z-index:9;
+  }
+  
+  
+  .custom-checkbox label:before{
+    width:18px;
+    height:18px;
+  }
+  .custom-checkbox label:before{
+    content:"";
+    margin-right:10px;
+    display:inline-block;
+    vertical-align:text-top;
+      background-color:#fff;
+      border:1px solid #bbb;
+      border-radius:2px;
+      box-sizing:border-box;
+      z-index:2;
+  }
+  
+  
+  .custom-checkbox input[type="checkbox"]:checked + label:after{
+    content:"";
+    position:absolute;
+    left:6px;
+    top:3px;
+    width:6px;
+    height:11px;
+    border:solid #000;
+    border-width:0 3px 3px 0;
+    transform:inherit;
+    z-index:3;
+    transform:rotatez(45deg);
+  }
+  
+    .custom-checkbox input[type="checkbox"]:checked + label:before{
+      border-color:#03A9F4;
+      background:#03A9F4;
+    }
+  
+  
+  .custom-checkbox input[type="checkbox"]:checked + label:after{
+    border-color:#fff;
+  }
+  
+  
+  .custom-checkbox input[type="checkbox"]:disabled + label:before{
+    color:#b8b8b8;
+    cursor:auto;
+    box-shadow:none;
+    background:#ddd;
+  }
+  .modal .modal-dialog{
+    max-width:400px;
+  }
+  .modal .modal-header, .modal .modal-body,.modal .modal-footer{
+    padding:20px 30px;
+  }
+  .modal .modal-content{
+    border-radius:3px;
+  }
+  
+  .modal .modal-footer{
+    background:#ecf0f1;
+    border-radius:0 0 3px 3px;
+  }
+  
+  .modal .modal-title{
+    display:inline-block;
+  }
+  
+  .modal .form-control{
+    border-radius:2px;
+    box-shadow:none;
+    border-color:#dddddd;
+  }
+  
+   .modal textarea.form-control{
+   resize:vertical;
+ }
+ 
+   .modal .btn{
+     border-radius:2px;
+     min-width:100px;
+   }
+   
+   .modal form label{
+     font-weight:normal;
+   }
+   
+   
+   
+   
+   
+   
+   
+  
+       /*-------modal-style end------*/
+    
+    
+    
+       /*-------footer design start------*/
+     footer{
+        background-color:#353b48;
+      color:#fff;
+      text-align:center;
+      padding:10px 30px;
+      position:relative;
+      width:100%;
+     }
+    
+        /*-------footer design end------*/
+    
+    
+    
+    #sidebar.show-nav, .body-overlay.show-nav{
+      transform:translatex(0%);
+      opacity:1;
+      display:block;
+      visibility:visible;
+      z-index:15;
+    }
+    button {
+      background-color: #D9716F;
+      color: white;
+      padding: 8px 10px;
+      margin: 4px 0;
+      border: none;
+      cursor: pointer;
+      width: 25%;
+      opacity: 0.9;
+    }
+    
+    button:hover {
+      opacity:1;
+    }
+    
+    /* Float cancel and delete buttons and add an equal width */
+    .cancelbtn, .deletebtn {
+      float: left;
+      width: 50%;
+    }
+    
+    /* Add a color to the cancel button */
+    .cancelbtn {
+      background-color: #fff;
+      color: #D9716F;
+      border: 0.5px solid #D9716F;
+    }
+    
+    /* Add a color to the delete button */
+    .deletebtn {
+      background-color: #D9716F;
+    }
+    
+    /* Add padding and center-align text to the container */
+    .container {
+      padding: 16px;
+      text-align: center;
+    }
+    
+    /* The Modal (background) */
+    .modal {
+      display:none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 10%;
+      top: 10%;
+      right: 10%;
+      bottom: 10%;
+      width: 90%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: #fff;
+      padding-top: 50px;
+    }
+    
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #D9716F;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+    
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+     
+    /* The Modal Close Button (x) */
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #D9716F;
+      cursor: pointer;
+    }
+    
+    /* Clear floats */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+    /* Change styles for cancel button and delete button on extra small screens */
+    @media screen and (max-width: 300px) {
+      .cancelbtn, .deletebtn {
+         width: 100%;
+      }
+

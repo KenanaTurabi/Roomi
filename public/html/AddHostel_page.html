@@ -1,0 +1,220 @@
+
+<head>
+  <script>
+    function getParams() {
+      var idx = document.URL.indexOf('?');
+      var params = new Array();
+      if (idx != -1) {
+      var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+      for (var i=0; i<pairs.length; i++) {
+      nameVal = pairs[i].split('=');
+      params[nameVal[0]] = nameVal[1];
+         }
+      }
+      return params;
+      }
+      params = getParams();
+  </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My hostels</title>
+    <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+    <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<div class="blur"  id="myForm"> 
+  </div>
+
+
+<body>
+
+
+<header>
+
+<div class="logo" ><i class="ri-home-heart-fill"></i><span>Roomi</span></div>
+<ul class="navbar" id="u">
+
+  <li><a href="#" class="active" id="myhostels" onclick="fun1()">My hostels</a></li>
+
+<li><a href="#" id="inbox" onclick="fun1()">Inbox</a></li>
+<li><a href="../SignIn.html">Sign out</a></li>
+
+
+
+</ul>
+<div class="main">
+   
+    <a href="#" class="user" id="myprofile" ><i class="ri-user-fill"></i><span id="myname"> Profile</span></a>
+
+    <div class="bx bx-menu" id="menu-icon">
+      <!-- <a href="#"  ><i class="fa-solid fa-bars"></i></a>-->
+    </div>
+</div>
+</header>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<button class="open-button" onclick="openForm()">
+    Add hostel<i class="ri-add-fill"></i></button>
+<!-- The form -->
+<div class="form-popup" id="myForm1">
+  
+
+  
+  
+  
+  <form action="https://roomi.azurewebsites.net/hostel/add" class="form-container" method="post">
+
+    <h1>Add hostel</h1>
+    <input type="hidden"   id="investorId" name="investorId">
+
+    <div><h4 style="color: #d7c9c1;">Hostel name</h4></div>
+    <input type="text" name="hostel_name" required>
+
+    <div><h4 style="color: #d7c9c1;">Price </h4></div>
+    <input type="number"  name="hostel_price" min="0"  required>
+
+    <div><h4 style="color: #d7c9c1;">Location </h4></div>
+    <input type="text"  name="hostel_location" required> 
+    
+    <div><h4 style="color: #d7c9c1;">Description </h4></div>
+    <input type="text"  name="hostel_decsc" required> 
+    <div><h4 style="color: #d7c9c1;">Location description </h4></div>
+    <input type="text"  name="hostel_location_desc" required> 
+    <div><h4 style="color: #d7c9c1;">Capacity </h4></div>
+    <input type="number"  name="capacity" required> 
+
+    <div><h4 style="color: #d7c9c1;">Gender</h4></div>
+    <div class="field-wrap">
+      <table>
+        <tbody>
+          <tr>
+            <td><input type="radio" id="female" name="girls" value="1"></td>
+            <td class="Rtype">Females</td>
+            <td><input type="radio"  id="male" name="girls" value="0"></td>
+            <td class="Rtype">Males</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div><h4 style="color: #d7c9c1;">Choose images</h4></div>
+
+   <input type="file" id="image" name="hostel_image1"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+   <input type="file" id="image" name="hostel_image2"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+   <input type="file" id="image" name="hostel_image3"  accept="image/png, image/jpeg" style="margin-bottom: 10px;" required>
+    <button type="submit" class="btn">Add</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+<!-------cards---------->
+<section class="articles" id="articles">
+  <!-- <script type="text/javascript" src="../js/investor_hostels.js"></script> -->
+
+</section>
+</body>
+
+<script>
+
+  let investor_id=unescape(params["id"]);
+const myprofile=document.getElementById("myprofile");
+myprofile.href=`./investorProfile.html?id=${investor_id}`;
+
+  const display_hostelname=document.querySelector('#hostel_name');
+  const display_hosteldesc=document.querySelector('#hostel_decsc');
+  let articles1=document.getElementById("articles");
+  const investorid=document.getElementById("investorId");
+ 
+  investorid.value=unescape(params["id"]);
+
+   fetch('https://roomi.azurewebsites.net/user/myHostels', {
+
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+  //make sure to serialize your JSON body
+  body: JSON.stringify({
+    id:unescape(params["id"])
+
+  
+  })
+})
+
+   .then(res=>res.json())
+   .then(json=>{
+      json.map(data=>{
+        
+      console.log(data.hostel_name, data.hostel_decsc,data.hostel_image1, data.hostel_image2, data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id)
+      articles1.append(fun(data.hostel_name, data.hostel_decsc,data.hostel_image1,data.hostel_image2,data.hostel_image3,data.girls,data.hostel_price,data.capacity,data.hostel_location,data.hostel_location_desc,data.id, data.investorid));
+  })
+  })
+  function fun1(investorid){
+    document.getElementById("myhostels").href=`../html/AddHostel_page.html?id=${unescape(params["id"])}`
+    document.getElementById("myprofile").href=`../html/investorProfile.html?id=${unescape(params["id"])}`
+    document.getElementById("inbox").href=`../html/Inbox.html?investorId=${unescape(params["id"])}`
+    return false;
+  }
+  function fun(hostel_name, hostel_decsc,hostel_image1,hostel_image2,hostel_image3,girls,hostel_price,capacity,hostel_location,hostel_location_desc,id,investorid){
+      let d=document.createElement('article');
+      d.innerHTML=`
+  
+  
+  
+  <div class="article-wrapper">
+    <figure>
+      <img src="../img/${hostel_image1}">
+    </figure>
+   
+   
+    
+  
+    <div class="article-body">
+    <h2 id="hostel_name">${hostel_name}</h2></h2>
+  
+    
+      <p id="hostel_decsc" style="color:#6d5a50;">${hostel_decsc}
+      </p>
+    
+  
+      <a href="../html/InvestorHostel.html?var10=${id}&var12=${unescape(params["id"])}" class="read-more" >
+        Read more<span class="sr-only">about this is some title</span>
+  
+       
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+     
+    </div>
+  
+  </div>`;
+  return d;
+  }
+    </script>
+  
+
+   
+
+
+
+
+
+
+  
+
+

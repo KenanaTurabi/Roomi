@@ -1,0 +1,152 @@
+
+<head>
+    <script>
+      function getParams() {
+        var idx = document.URL.indexOf('?');
+        var params = new Array();
+        if (idx != -1) {
+        var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+        for (var i=0; i<pairs.length; i++) {
+        nameVal = pairs[i].split('=');
+        params[nameVal[0]] = nameVal[1];
+           }
+        }
+        return params;
+        }
+        params = getParams();
+    </script>
+  
+  
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> My hostels</title>
+      <link rel="stylesheet" type="text/css" href="../css/AddHostel.css">
+      <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="..\css\stylerat.css">
+  </head>
+  <div class="blur"  id="myForm"> 
+    </div>
+  
+  
+  <body>
+  
+  
+  <header>
+  
+  <div class="logo" ><i class="ri-home-heart-fill" style="margin-left: 50px;"></i><span>Roomi</span></div>
+  <ul class="navbar" id="u">
+  
+    <li><a href="#" id="home" class="page-scroll" onclick="fun1()">Home Page</a></li>
+    <li><a href="../SignIn.html">Sign out</a></li>
+  
+  
+  
+  </ul>
+
+  </header>
+  
+  <script type="text/javascript" src="../js/script.js"></script>
+
+
+  
+  
+
+  
+  <!-------cards---------->
+    <!-- <script type="text/javascript" src="../js/investor_hostels.js"></script> -->
+
+    <section class="articles" id="articles">
+ 
+   
+  </section>
+  </body>
+  
+  <script>
+  
+ 
+  
+  function fun1(){
+
+document.getElementById("home").href=`./ViewHostel.html?id=${unescape(params["studentId"])}`;
+
+}
+    let articles1=document.getElementById("articles");
+
+  
+     fetch('https://roomi.azurewebsites.net/student/bookedHostels', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      studentId:unescape(params["studentId"])
+  
+    
+    })
+  })
+  
+     .then(res=>res.json())
+     .then(json=>{
+        json.map(data=>{
+          
+        articles1.append(fun(data.hostel.hostel_name, data.hostel.hostel_decsc,data.hostel.hostel_image1,data.hostel.hostel_image2,data.hostel.hostel_image3,data.hostel.girls,data.hostel.hostel_price,data.hostel.capacity,data.hostel.hostel_location,data.hostel.hostel_location_desc,data.hostel.id));
+    })
+    })
+   
+    function fun(hostel_name, hostel_decsc,hostel_image1,hostel_image2,hostel_image3,girls,hostel_price,capacity,hostel_location,hostel_location_desc,id){
+        let d=document.createElement('article');
+        d.innerHTML=`
+    
+        <div class="article-wrapper">
+    <figure>
+      <img src="../img/${hostel_image1}">
+    </figure>
+   
+   
+    
+  
+    <div class="article-body">
+    <h2 id="hostel_name">${hostel_name}</h2></h2>
+  
+    
+      <p id="hostel_decsc" style="color:#6d5a50;">${hostel_decsc}
+      </p>
+    
+  
+      <a href="../html/comment_rate.html?var10=${id}&var12=${unescape(params["studentId"])}" class="read-more" >
+        Read more<span class="sr-only">about this is some title</span>
+  
+       
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+     
+    </div>
+  
+  </div>
+          
+    
+    `;
+    return d;
+    }
+      </script>
+    
+  
+     
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  

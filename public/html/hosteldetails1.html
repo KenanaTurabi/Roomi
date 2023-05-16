@@ -1,0 +1,488 @@
+<html>
+
+<head>
+  <script>
+    function getParams() {
+      var idx = document.URL.indexOf('?');
+      var params = new Array();
+      if (idx != -1) {
+      var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+      for (var i=0; i<pairs.length; i++) {
+      nameVal = pairs[i].split('=');
+      params[nameVal[0]] = nameVal[1];
+         }
+      }
+      return params;
+      }
+  
+      params = getParams();
+  </script>
+  <link rel="stylesheet" href="../css/styleCV1.css">
+
+<!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    
+
+    
+    
+    
+    <!-- Stylesheet
+        ================================================== -->
+    <link rel="stylesheet" type="text/css" href="../css/style1.css">
+    <link rel="stylesheet" type="text/css" href="../css/details.css">
+    <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="../css/nivo-lightbox/default.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" type="text/css" href="../css/hostelscard.css">
+
+    <script src="https://kit.fontawesome.com/30c613cbae.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Hostel details</title>
+    <link rel="stylesheet" type="text/css" href="../css/hostelscard.css">
+
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+ 
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script> 
+
+
+
+</head>
+<!-- <div class="blur"  id="myForm"> 
+  </div> -->
+
+
+ <body>
+
+
+<header>
+
+<a href="#" class="logo"  id="myhostels" onclick="fun1()"><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 1.3em;" ></i><span style="font-size: 1.2em; margin-left: 10px;"></span></a>
+
+
+</header>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+
+
+<body>
+  <div>
+
+    <div class = "card-wrapper">
+<div class = "card">
+<div class = "host-imgs">
+<div class = "img-display">
+<div class = "img-showcase">
+<img src = "" alt = "host image" id="image11">
+<img src = "" alt = "host image"  id="image22">
+<img src = "" alt = "host image"  id="image33">
+</div>
+</div>
+<div class = "img-select">
+<div class = "img-item">
+<a href = "#" data-id = "1">
+<img src = "" alt = "host image"  id="image1">
+</a>
+</div>
+<div class = "img-item">
+<a href = "#" data-id = "2">
+<img src = "" alt = "host image"  id="image2">
+</a>
+</div>
+<div class = "img-item">
+<a href = "#" data-id = "3">
+<img src = "" alt = "host image"  id="image3">
+</a>
+</div>
+</div>
+</div>
+<!-- card right -->
+<div class = "hostel-content">
+<h2 class = "hostel-title" id="h_name"></h2>
+
+  <div class = "hostel-detail">
+      <ul>
+          <li>Owner name: <span><a href="#" onclick="viweprofile()"  id="name" class="nameI"></a></span></li>
+          <li>Gender: <span id="girls"></span></li>
+          <li class = "price" >Rental Price: <span id="price">₪</span></li>
+          <li>Capacity of tenants: <span id="capacity"></span></li>
+          <li>Number of tenants: <span>2</span></li>
+          <li>Location: <span id="location"></span></li>
+          
+
+        
+        </ul>
+<p id="location_desc"></p>
+<p id="desc"></p>
+
+<div class = "hostel-rating" id="r">
+             
+</div> 
+
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h5 style="text-align: center;">Are you sure to book this hostel?</h5>
+<div class="btns">
+    
+  </div>
+  </form>
+</div>
+
+</div>
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
+
+<div class="data">
+
+</div>             
+  </div>
+  
+</div>
+</div>
+
+</div>
+<!-- <script src="../details.js"></script> -->
+
+<!-------------------------------------------------------------------------->
+
+<div class="divScroll" style="  width:1350px;" id="scroll" >
+    <h3 style="margin-left: 200px; color:#d9716f"> Comments</h3>
+
+    <section class="main" >
+      <div class="full-boxer" id="comment">
+         
+      </div>
+      
+    </section>
+    </div>
+
+    
+
+
+
+
+<script>
+
+
+
+    function fun1(){
+        document.getElementById("myhostels").href=`../html/bookings.html`
+        return false;
+      }
+    
+   var data1;
+   var investor;
+  function viweprofile(){
+    var investorId = localStorage.getItem("investorId");
+
+     window.location.href = `./student_investorprofile.html?id=${investorId}`;
+    }
+    
+    
+        fetch('https://roomi.azurewebsites.net/hostels/showdetailsD', {
+    
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    
+    body: JSON.stringify({
+        id:unescape(params["var10"])
+    
+      })
+    })
+    
+     .then(res=>res.json())
+     .then((json)=>{
+      console.log(json.username)
+      console.log(json.investorid)
+
+      data1=json;
+        json.hostel.map(data=>{
+          var para1=document.getElementById('h_name');
+          var name=document.getElementById('name');
+          var investorid=json.investorid;
+      //  var para2=document.getElementById('capacity');
+       var para3=document.getElementById('price');
+       var para4=document.getElementById('location');
+       var para5=document.getElementById('location_desc');
+       var para6=document.getElementById('desc');
+       var para7=document.getElementById('image1');
+       var para8=document.getElementById('image2');
+       var para9=document.getElementById('image3');
+       var para77=document.getElementById('image11');
+       var para88=document.getElementById('image22');
+       var para99=document.getElementById('image33');
+       var para11=document.getElementById('girls');
+       var para22=document.getElementById('capacity');
+    
+    
+      var para10=document.getElementById('id');
+      var para12=document.getElementById('id1');
+      var investorId = data.investorId;
+
+localStorage.setItem("investorId", investorId);
+console.log(investorId);
+ 
+      para7.src = "../img/"+ data.hostel_image1;
+      para8.src = "../img/"+data.hostel_image2;
+      para9.src = "../img/"+data.hostel_image3;
+    
+      para77.src = "../img/"+ data.hostel_image1;
+      para88.src = "../img/"+data.hostel_image2;
+      para99.src = "../img/"+data.hostel_image3;
+    
+      para1.insertAdjacentHTML('beforeend',data.hostel_name);
+      para22.textContent=data.capacity;
+      name.insertAdjacentHTML('beforeend',json.username);
+
+      para3.insertAdjacentHTML('beforeend',data.hostel_price);
+    
+      para4.insertAdjacentHTML('beforeend',data.hostel_location);
+      para5.insertAdjacentHTML('beforeend',data.hostel_location_desc);
+      para6.insertAdjacentHTML('beforeend',data.hostel_decsc);
+    
+    if(data.girls==true){
+      para11.textContent="Female";
+    
+    }
+    else if(data.girls==false){
+      para11.textContent="Males";
+    
+    }
+     
+    })
+    })
+    
+</script> 
+
+
+<script>
+let c=0;
+let comment=document.getElementById("comment");
+
+   fetch('https://roomi.azurewebsites.net/hostel/comment', {
+
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+  //make sure to serialize your JSON body
+  body: JSON.stringify({
+    id:unescape(params["var10"])//send hostel id
+
+  
+  })
+})
+
+   .then(res=>res.json())
+   .then(json=>{
+      json.map(data=>{
+        
+      comment.append(fun(data.comment_DateTime, data.coment_content, data.student.username));
+      c++;
+  })
+  if(c==0){
+
+document.getElementById("scroll").style.overflowY="hidden";
+}
+  })
+
+
+  function fun(date,comment,username){
+      let d=document.createElement('div');
+      d.innerHTML=`
+      
+     
+    
+      <div class="comment-box">
+          <div class="box-top">
+              <div class="Profile">
+              
+                  <div class="Name">
+                      <strong>${username}</strong>
+                      <small style="color:#6d5a50;"><p5>${date}</p5></small>
+                   
+                  </div>
+              </div>
+          </div>
+          <div class="comment" style="padding-left:10px;">
+              <p>
+                ${comment}
+              </p>
+          </div>
+      </div>     
+    
+  `;
+  return d;
+  }
+    </script>
+
+<script>
+  let rating_val=0;
+  let rating_mod=0;
+let r1=0;
+let r2=0;
+let count=0;
+
+  let rating=document.getElementById("r");
+  
+     fetch('https://roomi.azurewebsites.net/hostel/rate', {
+  
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      id:unescape(params["var10"])//send hostel id
+  
+    
+    })
+  })
+
+     .then(res=>res.json())
+     .then(json=>{
+        json.map(data=>{
+          
+        rating_val=rating_val+data.rating_val;
+count++;
+    
+    })
+
+    rating_mod=rating_val/count;
+    
+  if(Math.floor(rating_mod)==5){
+    rating.append(f5());
+  }
+  else if(Math.floor(rating_mod)==4){
+    rating.append(f4());
+  }
+  else if(Math.floor(rating_mod)==3){
+    rating.append(f3());
+  }
+ 
+ 
+  else if(Math.floor(rating_mod)==2){
+    rating.append(f2());
+  }
+ 
+ 
+  else if(Math.floor(rating_mod)==1){
+    rating.append(f1());
+  }
+ 
+ 
+ 
+      
+    })
+    
+    
+    
+  
+    function f5(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f4(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f3(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f2(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+    function f1(rating_val){
+        let d=document.createElement('div');
+        d.innerHTML=`
+       
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+              <i class = "fas fa-star-empty-alt"></i>
+            
+       
+      
+    `;
+    return d;
+    }
+      </script>
+
+<script src="../js/details.js"></script>
+</body>
+</html>

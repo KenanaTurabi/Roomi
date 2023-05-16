@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- import font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Nunito&display=swap" rel="stylesheet">
+  <!-- import main style -->
+  <link rel="stylesheet" href="css/SignUp.css">
+  <!-- <script src="SignUp.js"></script> -->
+  <!-- import font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+
+
+  <!-- ////////////Bootstrap///////// -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script> -->
+
+
+
+  <title>signup</title>
+</head>
+
+
+
+<body>
+
+  <header>
+    <a href="#" class="logo"><i class="ri-home-heart-fill"></i><span>Roomi</span></a>
+    <div class="main">
+
+      <a href="#" class="user"></i><span>Welcome Page</span></a>
+
+    </div>
+  </header>
+
+
+  <div class="form">
+
+    <div class="tab-content">
+      <div id="signup">
+        <h1>Sign Up for Free</h1>
+
+        <form>
+
+          <div class="field-wrap">
+            <label>
+              username@gmail.com<span class="req">*</span>
+            </label>
+            <input type="email" required autocomplete="off" id="Email" name="email"  />
+          </div>
+        
+    
+<div class="top-row"> 
+
+  <div class="field-wrap">
+    <label>
+      UserName<span class="req">*</span>
+    </label>
+    <input type="text" required autocomplete="off" id="UserName" name="username"  />
+  </div>
+
+ 
+          <div class="field-wrap">
+            <label>
+              Phone Number<span class="req">*</span>
+            </label>
+            <input type="mobile" required autocomplete="off" id="phone" name="mobileNumber" />
+          </div>
+        </div>
+
+        
+
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password" required autocomplete="off" id="Password" name="password" />
+          </div>
+     
+        </div>
+
+          <div class="field-wrap">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="role" name="role">Your Role:</td>
+                  <td><input type="radio" name="Role" id="investorRadio" value="investor"></td>
+                  <td class="Rtype">Investor</td>
+                  <td><input type="radio" name="Role" id="studentRadio" value="student"></td>
+                  <td class="Rtype">Student</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+          <div class="field-wrap">
+   
+            <select id="city" name="city" style="width: 150px;" required>
+              <option value="">Select City</option>
+              <option value="Ramallah">Ramallah</option>
+              <option value="Nablus">Nablus</option>
+        
+              <option value="Hebron">Hebron</option>
+        
+              <option value="Jericho">Jericho</option>
+        
+              <option value="Betlehem">Betlehem</option>
+              <option value="Tulkarm"> Tulkarm</option>
+
+              <option value="Jenin">Jenin</option>
+              <option value="Qalqilya">Qalqilya</option>
+              <option value="Gaza">Gaza</option>
+              <option value="Khan Yunis">Khan Yunis</option>
+
+              <option value="Rafah">Rafah</option>
+              <option value="Bayt Sahur">Bayt Sahur</option>
+              <option value="Bayt Jala">Bayt Jala</option>
+              <option value="Halhul">Halhul</option>
+              <option value="Beit Lahia">Beit Lahia</option>
+              <option value="Deir al Balah">Deir al Balah
+              </option>
+              <option value="Al-Bireh">Al-Bireh</option>
+              <option value="Yata">Yata
+              </option>
+              <option value="Bani Suheila">Bani Suheila</option>
+              <option value="Jabalia">Jabalia</option>
+              <option value="Tubas">Tubas</option>
+              <option value="Idhna">Idhna</option>
+              <option value="as-Samu">as-Samu</option>
+
+              <option value="ad-Dhahiriya">ad-Dhahiriya</option>
+
+              <option value="Bani Naim">Bani Naim</option>
+              <option value="Yamun">Yamun</option>
+
+              <option value="Beit Hanun">Beit Hanun
+              </option>
+              <option value="Ya'bad">Ya'bad</option>
+              <option value="Jerusalem">Jerusalem</option>
+              <option value="Salfit">Salfit</option>
+              <option value="Battir">Battir</option>
+
+
+
+        
+          </select>
+          </div>
+        
+
+
+          <button type="button" class="button button-block" onclick="onSignUpPressed()">Get Started</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <script type="text/javascript" src="SignUp.js"></script> -->
+  <script type="text/javascript" src="SignUp.js"></script>
+
+
+</body>
